@@ -13,11 +13,14 @@ function useTask(){
                 ...estado, tasks: [...estado.tasks, acao.payload]
             }
             case "REMOVE_TASK": return{
-                tasks: estado.task.filter(task => task.id !== acao.payload)
+                tasks: estado.tasks.filter(task => task.id !== acao.payload)
             }
             case "UPDATE_TASK": return{
-                tasks: estado.task.filter(task => task.id !== acao.payload);
-                ...estado, tasks: [...estado.tasks, acao.payload]
+                tasks: tasks.map(task => {
+                    if(task.id === acao.payload.id){
+                        return acao.payload
+                    }
+                })
             }
         }
     }
