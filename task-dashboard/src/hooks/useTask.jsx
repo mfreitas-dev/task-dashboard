@@ -24,8 +24,7 @@ function useTask(){
                     } else {
                         return task
                     }
-                })
-            }
+            })}
             // case "TOGGLE_TASK":
             default:
                 return estado;
@@ -35,7 +34,19 @@ function useTask(){
     const [estado, dispatch] = useReducer(reducer, estadoInicial);
 
     function addTask(task){
+        dispatch({type: "ADD_TASK", payload: {
+            id: Date.now(), 
+            title: task.title, 
+            description: task.description, 
+            priority: task.priority, 
+            completed: task.completed
+        }})
+    }
+    function removeTask(id){
 
+    }
+    function updateTask(task){
+        
     }
 
     return {tasks,addTask,removeTask,updateTask,toggleTask}
