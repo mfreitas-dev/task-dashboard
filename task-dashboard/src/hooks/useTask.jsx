@@ -55,7 +55,7 @@ function useTask(){
         dispatch({ type: "REMOVE_TASK", payload: id })
     }
     function updateTask(task){
-        dispatch({type: "UPDATE_TASK", payload: {task}})
+        dispatch({type: "UPDATE_TASK", payload: task})
     }
     function toggleTask(id){
         dispatch({ type: "TOGGLE_TASK", payload: id })

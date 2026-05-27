@@ -1,0 +1,43 @@
+import { useState } from "react";
+import useTask from "../../hooks/useTask";
+export default TaskForm;
+
+function TaskForm({addTask}){
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [priority, setPriority] = useState("");
+
+    function handleSubmit(){ 
+        event.preventDefault()
+        if(title === ""){ return }
+
+        addTask({
+            title: title,
+            description: description,
+            priority: priority,
+        });
+
+        setTitle("");
+        setDescription("");
+        setPriority("");
+    }
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <label htmlFor="title">Nome</label>
+            <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="Nome da Tarefa"/>
+
+            <label htmlFor="description">Descrição</label>
+            <input type="text" value={description} onChange={e => setDescription(e.target.value)} placeholder="Descrição da Tarefa"/>
+
+            <label htmlFor="priority"></label>
+            <select value={priority} onChange={e => setPriority(e.target.value)}>
+                <option value="Baixa">Baixa</option>
+                <option value="Média">Média</option>
+                <option value="Alta">Alta</option>
+            </select>
+
+            <button type="submit">Adicionar Tarefa</button>
+        </form>
+    )
+}

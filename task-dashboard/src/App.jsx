@@ -7,6 +7,7 @@ import useTask from './hooks/useTask'
 
 function App() {
   const [count, setCount] = useState(0);
+  const {tasks,addTask,removeTask,toggleTask} = useTask();
 
   return (
     <>
