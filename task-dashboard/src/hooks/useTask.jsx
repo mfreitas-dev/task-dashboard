@@ -25,7 +25,18 @@ function useTask(){
                         return task
                     }
             })}
-            // case "TOGGLE_TASK":
+            case "TOGGLE_TASK": return{
+                ...estado, tasks: estado.tasks.map((task) => {
+                    if(task.id === acao.payload){
+                        return {
+                            ...task,
+                            completed: !(task.completed) 
+                        }
+                    } else {
+                        return task
+                    }
+                })
+            }
             default:
                 return estado;
         }
@@ -35,19 +46,20 @@ function useTask(){
 
     function addTask(task){
         dispatch({type: "ADD_TASK", payload: {
-            id: Date.now(), 
-            title: task.title, 
-            description: task.description, 
-            priority: task.priority, 
-            completed: task.completed
+            ...task,
+            id: Date.now(),
+            completed: false
         }})
     }
     function removeTask(id){
-
+        dispatch({ type: "REMOVE_TASK", payload: id })
     }
     function updateTask(task){
-        
+        dispatch({type: "UPDATE_TASK", payload: {task}})
+    }
+    function toggleTask(id){
+        dispatch({ type: "TOGGLE_TASK", payload: id })
     }
 
-    return {tasks,addTask,removeTask,updateTask,toggleTask}
+    return {tasks: estado.tasks,addTask,removeTask,updateTask,toggleTask}
 }
