@@ -25,12 +25,12 @@ function useTask(){
                         return task
                     }
             })}
-            case "TOGGLE_TASK": return{
+            case "COMPLETE_TASK": return{
                 ...estado, tasks: estado.tasks.map((task) => {
                     if(task.id === acao.payload){
                         return {
                             ...task,
-                            completed: !(task.completed) 
+                            completed: true
                         }
                     } else {
                         return task
@@ -57,9 +57,9 @@ function useTask(){
     function updateTask(task){
         dispatch({type: "UPDATE_TASK", payload: task})
     }
-    function toggleTask(id){
-        dispatch({ type: "TOGGLE_TASK", payload: id })
+    function completeTask(id){
+        dispatch({ type: "COMPLETE_TASK", payload: id })
     }
 
-    return {tasks: estado.tasks,addTask,removeTask,updateTask,toggleTask}
+    return {tasks: estado.tasks,addTask,removeTask,updateTask,completeTask}
 }
