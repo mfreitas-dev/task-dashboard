@@ -32,9 +32,8 @@ function TaskForm({addTask}){
 
             <label htmlFor="priority"></label>
             <select value={priority} onChange={e => setPriority(e.target.value)}>
-                <option value="Baixa">Baixa</option>
-                <option value="Média">Média</option>
-                <option value="Alta">Alta</option>
+                <option value="baixa">Baixa</option>
+                <option value="alta">Alta</option>
             </select>
 
             <button type="submit">Adicionar Tarefa</button>
