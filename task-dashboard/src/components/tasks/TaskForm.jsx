@@ -1,8 +1,6 @@
 import { useState } from "react";
 import useTask from "../../hooks/useTask";
-export default TaskForm;
-
-function TaskForm({addTask}){
+export default function TaskForm({addTask}){
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [priority, setPriority] = useState("");
