@@ -3,11 +3,17 @@ import { useReducer } from "react";
 export default useTask;
 
 function useTask(){
-    const estadoInicial = {
-        tasks: [
+    const estadoInicial = () => ({
+        tasks: JSON.parse(localStorage.getItem("tasks")) || []
             // {id, title, description, priority, completed}
-        ]
-    };
+    });
+
+    useEffect(() => {
+        localStorage.setItem(
+            "tasks",
+            JSON.stringify(estado.tasks)
+        );
+    }, [estado.tasks]);
 
     function reducer(estado, acao){
         switch(acao.type){
