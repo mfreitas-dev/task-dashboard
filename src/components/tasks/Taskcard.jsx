@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export default function TaskCard({task, completeTask, updateTask, removeTask}){
     const [editing, setEditing] = useState(false);
     const [title, setTitle] = useState(task.title);
@@ -39,7 +41,7 @@ export default function TaskCard({task, completeTask, updateTask, removeTask}){
                 : <p>Prioridade: {task.priority}</p>}
 
             {(editing === false) && <button onClick={() => setEditing(true)}>Editar</button>}
-            {(editing) && <button onClick={() => handleSubmit()}>Concluir edição</button>}
+            {(editing) && <button onClick={handleSubmit}>Concluir edição</button>}
             
             {(editing === false) && 
             <button onClick={() => completeTask(task.id)} disabled={task.completed}>

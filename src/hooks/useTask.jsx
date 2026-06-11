@@ -1,19 +1,10 @@
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 
-export default useTask;
-
-function useTask(){
-    const estadoInicial = () => ({
+export default function useTask(){
+    const estadoInicial = {
         tasks: JSON.parse(localStorage.getItem("tasks")) || []
             // {id, title, description, priority, completed}
-    });
-
-    useEffect(() => {
-        localStorage.setItem(
-            "tasks",
-            JSON.stringify(estado.tasks)
-        );
-    }, [estado.tasks]);
+    };
 
     function reducer(estado, acao){
         switch(acao.type){
@@ -48,7 +39,14 @@ function useTask(){
         }
     };
 
-    const [estado, dispatch] = useReducer(reducer, estadoInicial);
+    const [estado, dispatch] = useReducer(reducer, estadoInicial);    
+    
+    useEffect(() => {
+        localStorage.setItem(
+            "tasks",
+            JSON.stringify(estado.tasks)
+        );
+    }, [estado.tasks]);
 
     function addTask(task){
         dispatch({type: "ADD_TASK", payload: {
