@@ -1,6 +1,6 @@
 # React + Vite
 
-SITE EM DEPLOY: PENDENTE
+STATUS DO DEPLOY: OK
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
