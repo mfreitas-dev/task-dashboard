@@ -1,6 +1,6 @@
 export default function TaskFilters({ filter, setFilter }){
     return (
-        <div>
+        <div className="filter">
             <select value={filter} onChange={(event) => setFilter(event.target.value)}>
                 <option value="todas">Todas</option>
                 <option value="pendentes">Pendentes</option>

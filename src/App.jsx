@@ -29,7 +29,8 @@ function App() {
 
 
   return (
-    <div>
+    <div className='app'>
+      <h1>Task Dashboard</h1>
       <TaskForm addTask={addTask}/>
 
       <TaskFilters filter={filter} setFilter={setFilter}/>

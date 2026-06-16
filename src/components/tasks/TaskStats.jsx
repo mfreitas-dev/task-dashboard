@@ -14,11 +14,26 @@ export default function TaskStats({tasks}){
     }, [tasks])
     
     return (
-        <div>
-            <p>Total de tarefas: {(tasks || []).length}</p>
-            <p>Total de tarefas concluídas: {quantidadeconcluidas}</p>
-            <p>Total de tarefas pendentes: {quantidadependentes}</p>
-            <p>Categoria com maior quantidade de tarefas: {maiorprio}</p>
+        <div className="stats">
+        <div className="stat-card">
+            <h3>Total de tarefas</h3>
+            <p>{(tasks || []).length}</p>
         </div>
+
+        <div className="stat-card">
+            <h3>Concluídas</h3>
+            <p>{quantidadeconcluidas}</p>
+        </div>
+
+        <div className="stat-card">
+            <h3>Pendentes</h3>
+            <p>{quantidadependentes}</p>
+        </div>
+
+        <div className="stat-card">
+            <h3>Maior categoria</h3>
+            <p>{maiorprio}</p>
+        </div>
+    </div>
     )
 }

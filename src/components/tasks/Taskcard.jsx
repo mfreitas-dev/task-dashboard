@@ -20,35 +20,77 @@ export default function TaskCard({task, completeTask, updateTask, removeTask}){
         setEditing(false);
     }
     return (
-        <div>
-            {(editing) 
-                ? <input  type="text" value={title} 
-                        onChange={e => setTitle(e.target.value)} 
-                        placeholder={title} /> 
-                : <p>Nome da tarefa: {task.title}</p>}
-            
-            {(editing) 
-                ? <input  type="text" value={description} 
-                        onChange={e => setDescription(e.target.value)} 
-                        placeholder={description} /> 
-                : <p>Descrição da tarefa: {task.description}</p>}
+    <div
+        className={`task-card ${
+            task.priority === "alta"
+                ? "priority-high"
+                : "priority-low"
+        }`}
+    >
+        {editing ? (
+            <>
+                <input
+                    type="text"
+                    value={title}
+                    onChange={e => setTitle(e.target.value)}
+                />
 
-            {(editing) 
-                ?   <select value={priority} onChange={e => setPriority(e.target.value)}>
-                        <option value="baixa">Baixa</option>
-                        <option value="alta">Alta</option>
-                    </select>
-                : <p>Prioridade: {task.priority}</p>}
+                <input
+                    type="text"
+                    value={description}
+                    onChange={e => setDescription(e.target.value)}
+                />
 
-            {(editing === false) && <button onClick={() => setEditing(true)}>Editar</button>}
-            {(editing) && <button onClick={handleSubmit}>Concluir edição</button>}
-            
-            {(editing === false) && 
-            <button onClick={() => completeTask(task.id)} disabled={task.completed}>
-                Concluir tarefa
-            </button>}
+                <select
+                    value={priority}
+                    onChange={e => setPriority(e.target.value)}
+                >
+                    <option value="baixa">Baixa</option>
+                    <option value="alta">Alta</option>
+                </select>
+            </>
+        ) : (
+            <>
+                <h3>{task.title}</h3>
 
-            <button onClick={() => removeTask(task.id)}>Excluir tarefa</button>
+                <p>{task.description}</p>
+
+                <small>
+                    Prioridade: {task.priority}
+                </small>
+            </>
+        )}
+
+        <div className="task-actions">
+            {!editing && (
+                <button onClick={() => setEditing(true)} className="edit-btn">
+                    Editar
+                </button>
+            )}
+
+            {editing && (
+                <button onClick={handleSubmit}>
+                    Salvar
+                </button>
+            )}
+
+            {!editing && (
+                <button
+                    className="complete-btn"
+                    onClick={() => completeTask(task.id)}
+                    disabled={task.completed}
+                >
+                    Concluir
+                </button>
+            )}
+
+            <button
+                className="delete-btn"
+                onClick={() => removeTask(task.id)}
+            >
+                Excluir
+            </button>
         </div>
-    )
+    </div>
+)
 }

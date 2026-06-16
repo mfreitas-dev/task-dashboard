@@ -2,7 +2,7 @@ import TaskCard from "./Taskcard";
 
 export default function TaskList({tasks, completeTask, removeTask, updateTask}){
     return (
-        <div>
+        <div className="tasks">
             {tasks.map((task) => 
                 <TaskCard 
                 task={task} 
