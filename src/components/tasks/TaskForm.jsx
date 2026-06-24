@@ -20,7 +20,6 @@ export default function TaskForm({addTask}){
 
     return (
         <form className="task-form" onSubmit={handleSubmit}>
-            {/* <h2>Nova Tarefa</h2> */}
 
             <div className="form-group">            
                 <label htmlFor="title">Nome</label>

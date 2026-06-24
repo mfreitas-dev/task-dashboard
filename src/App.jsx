@@ -4,10 +4,15 @@ import TaskForm from './components/tasks/TaskForm'
 import TaskList from './components/tasks/TaskList'
 import TaskFilters from './components/tasks/TaskFilters'
 import TaskStats from './components/tasks/TaskStats'
+import { ThemeContext } from './hooks/useThemeContext'
 
 function App() {
   const {tasks, addTask, removeTask, completeTask, updateTask} = useTask();
   const [filter, setFilter] = useState("");
+  const [islight, setTheme] = useState(true);
+  const Themevalue = useMemo(() => 
+    ({ islight, setTheme })
+  , [islight]);
 
   const filteredTasks = useMemo(() => {
     if(filter === "pendentes"){
@@ -29,16 +34,27 @@ function App() {
 
 
   return (
-    <div className='app'>
-      <h1>Task Dashboard</h1>
-      <TaskForm addTask={addTask}/>
+    <ThemeContext.Provider value={Themevalue}>
+      <body className={`${(islight) ? "" : "dark"}`}>
+        <div className={`app ${(islight) ? "" : "dark"}`}>
+          <div className="header">
+            <h1>Task Dashboard</h1>
 
-      <TaskFilters filter={filter} setFilter={setFilter}/>
+            <button type="button" className='theme-button' onClick={() => setTheme(!islight)}>
+              {(islight === true) ? "Mudar para tema escuro" : "Mudar para tema claro"}
+            </button>
+          </div>
 
-      <TaskStats tasks={tasks}/>
-      
-      <TaskList tasks={filteredTasks} completeTask={completeTask} removeTask={removeTask} updateTask={updateTask}/>
-    </div>
+          <TaskForm addTask={addTask}/>
+
+          <TaskFilters filter={filter} setFilter={setFilter}/>
+
+          <TaskStats tasks={tasks}/>
+          
+          <TaskList tasks={filteredTasks} completeTask={completeTask} removeTask={removeTask} updateTask={updateTask}/>
+        </div>
+      </body>
+    </ThemeContext.Provider>
   )
 }
 

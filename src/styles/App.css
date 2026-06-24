@@ -3,6 +3,12 @@
   margin: 0 auto;
   padding: 40px 20px;
 }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
 
 .app h1 {
   margin-bottom: 24px;
@@ -159,4 +165,280 @@
     font-size: 0.9rem;
     font-weight: 600;
     color: #374151;
+}
+/* CONTAINER */
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  transition: all .3s ease;
+}
+
+.app h1 {
+  margin-bottom: 24px;
+  font-size: 2rem;
+  color: #1f2937;
+}
+
+/* FORMULÁRIO */
+
+.task-form {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0,0,0,.08);
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 16px;
+
+  margin-bottom: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: .9rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.task-form input,
+.task-form select {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  min-width: 180px;
+}
+
+.task-form button {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: .2s;
+}
+
+.task-form button:hover {
+  transform: translateY(-1px);
+}
+
+/* FILTRO */
+
+.filter {
+  margin-bottom: 24px;
+}
+
+.filter select {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background: white;
+}
+
+/* ESTATÍSTICAS */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0,0,0,.08);
+}
+
+.stat-card h3 {
+  color: #6b7280;
+  font-size: .95rem;
+  margin-bottom: 12px;
+}
+
+.stat-card p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+/* LISTA */
+
+.tasks {
+  display: grid;
+  gap: 16px;
+}
+
+/* CARD */
+
+.task-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,.08);
+  transition: .2s;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+}
+
+.task-card h3 {
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+.task-card p {
+  margin-bottom: 10px;
+  color: #6b7280;
+}
+
+.task-card small {
+  display: block;
+  margin-bottom: 14px;
+  color: #9ca3af;
+}
+
+/* PRIORIDADES */
+
+.priority-high {
+  border-left: 6px solid #ef4444;
+}
+
+.priority-low {
+  border-left: 6px solid #10b981;
+}
+
+/* AÇÕES */
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.task-actions button {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.complete-btn {
+  background: #10b981;
+  color: white;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+}
+
+/* ========================= */
+/* DARK MODE */
+/* ========================= */
+
+.app.dark {
+  color: #e5e7eb;
+}
+
+.app.dark h1 {
+  color: #f9fafb;
+}
+
+.app.dark .task-form,
+.app.dark .task-card,
+.app.dark .stat-card {
+  background: #1f2937;
+  box-shadow: 0 5px 20px rgba(0,0,0,.35);
+}
+
+.app.dark .task-form input,
+.app.dark .task-form select,
+.app.dark .filter select {
+  background: #111827;
+  color: #f9fafb;
+  border: 1px solid #374151;
+}
+
+.app.dark .form-group label {
+  color: #d1d5db;
+}
+
+.app.dark .task-card h3,
+.app.dark .stat-card p {
+  color: #f9fafb;
+}
+
+.app.dark .task-card p,
+.app.dark .stat-card h3,
+.app.dark .task-card small {
+  color: #9ca3af;
+}
+
+.app.dark .filter select {
+  background: #1f2937;
+  color: #f9fafb;
+}
+
+.app.dark .task-form button {
+  background: #6366f1;
+}
+
+.app.dark .task-form button:hover {
+  background: #818cf8;
+}
+/* BOTÃO DE TEMA */
+
+.theme-button {
+  position: static;
+  top: 20px;
+  right: 20px;
+
+  border: none;
+  border-radius: 12px;
+
+  padding: 12px 16px;
+
+  background: #4f46e5;
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  transition: all .2s ease;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,.15);
+
+  z-index: 1000;
+}
+
+.theme-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.2);
+}
+
+.theme-button:active {
+  transform: translateY(0);
+}
+.app.dark .theme-button {
+  background: #6366f1;
+  color: #ffffff;
+}
+
+.app.dark .theme-button:hover {
+  background: #818cf8;
 }
