@@ -60,8 +60,13 @@ src
 │       └── TaskStats.jsx
 │
 ├── hooks
-│   └── useTask.js
+│   └── useTask.jsx
+|   └── useThemeContext.jsx
 │
+├── styles
+|   └──App.css
+|   └──Index.css
+|
 ├── App.jsx
 ├── App.css
 └── index.css
