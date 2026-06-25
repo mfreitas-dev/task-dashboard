@@ -1,6 +1,6 @@
 # React + Vite
 
-STATUS DO DEPLOY: OK
+LINK DEPLOY: https://mfreitas-dev.github.io/task-dashboard/
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
